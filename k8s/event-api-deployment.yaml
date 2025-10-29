@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: event-api
+  labels:
+    app: event-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: event-api
+  template:
+    metadata:
+      labels:
+        app: event-api
+    spec:
+      containers:
+        - name: event-api
+          image: event-api:latest
+          ports:
+            - containerPort: 8000
+          env:
+            - name: KAFKA_HOST
+              value: "kafka"           # Set in local k8s; replace for EKS with actual host
+            - name: KAFKA_PORT
+              value: "9092"
+            - name: POSTGRES_HOST
+              value: "postgres"        # Set as needed/K8s service name or use secret
+            - name: POSTGRES_PORT
+              value: "5432"
+            - name: POSTGRES_USER
+              value: "postgres"
+            - name: POSTGRES_PASSWORD
+              value: "postgres"
+            - name: POSTGRES_DB
+              value: "events"
