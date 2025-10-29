@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: event-consumer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: event-consumer
+  template:
+    metadata:
+      labels:
+        app: event-consumer
+    spec:
+      containers:
+      - name: event-consumer
+        image: shantanup108/event-consumer:latest
+        env:
+        - name: KAFKA_BOOTSTRAP_SERVERS
+          value: "kafka:9092"
+        - name: POSTGRES_HOST
+          value: "postgres"
+        - name: POSTGRES_PORT
+          value: "5432"
+        - name: POSTGRES_DB
+          value: "events"
+        - name: POSTGRES_USER
+          value: "postgres"
+        - name: POSTGRES_PASSWORD
+          value: "postgres"
