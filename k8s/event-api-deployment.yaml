@@ -17,6 +17,7 @@ spec:
       containers:
         - name: event-api
           image: event-api:latest
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
           env:
