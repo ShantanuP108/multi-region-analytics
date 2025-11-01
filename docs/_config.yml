@@ -1,0 +1,18 @@
+# Jekyll configuration for Multi-Region Analytics GitHub Pages
+
+title: Multi-Region Analytics Platform
+description: Documentation and architecture for the multi-region analytics platform
+theme: jekyll-theme-cayman
+
+# Build settings
+markdown: kramdown
+
+# GitHub Pages settings
+baseurl: ""
+url: "https://shantanup108.github.io"
+
+# Exclude from processing
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
